@@ -14,6 +14,7 @@
 
         @include('layout.partials.head')
         <x-head.tinymce-config />
+
     </head>
 
     @if (

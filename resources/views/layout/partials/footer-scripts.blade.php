@@ -516,7 +516,7 @@
      <script src="{{ URL::asset('/build/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
  @endif
 
- @if (Route::is('*subcategories*'))
+ @if (Route::is('*subcategories*') || Route::is('*icons*'))
      <script src="{{ URL::asset('/build/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script>
      <script src="{{ URL::asset('/build/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
  @endif

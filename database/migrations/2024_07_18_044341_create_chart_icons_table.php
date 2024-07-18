@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('chart_icons', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->tinyInteger('status')->default(0); // Ensure no default value conflicts
+            $table->string('icon');
             $table->timestamps();
         });
     }

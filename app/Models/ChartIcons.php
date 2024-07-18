@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChartIcons extends Model
 {
+    protected  $fillable = ['name', 'status', 'icon'];
     use HasFactory;
 }

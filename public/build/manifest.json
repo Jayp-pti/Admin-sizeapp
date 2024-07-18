@@ -11,19 +11,19 @@
   },
   "resources/img/authentication/forgot-bg.jpg": {
     "file": "icons/login-bg.jpg",
-    "src": "resources/img/authentication/reset-bg.jpg"
+    "src": "resources/img/authentication/forgot-bg.jpg"
   },
   "resources/img/authentication/login-bg.jpg": {
     "file": "icons/login-bg.jpg",
-    "src": "resources/img/authentication/reset-bg.jpg"
+    "src": "resources/img/authentication/forgot-bg.jpg"
   },
   "resources/img/authentication/register-bg.jpg": {
     "file": "icons/login-bg.jpg",
-    "src": "resources/img/authentication/reset-bg.jpg"
+    "src": "resources/img/authentication/forgot-bg.jpg"
   },
   "resources/img/authentication/reset-bg.jpg": {
     "file": "icons/login-bg.jpg",
-    "src": "resources/img/authentication/reset-bg.jpg"
+    "src": "resources/img/authentication/forgot-bg.jpg"
   },
   "resources/img/favicon.png": {
     "file": "icons/favicon.png",

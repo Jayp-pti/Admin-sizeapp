@@ -52,7 +52,7 @@
                     <ul>
                         <li class="submenu">
                             <a href="javascript:void(0);"
-                                class="{{ Route::is('size_charts.index', 'size_charts.create', 'icons.create') ? 'subdrop active' : '' }}">
+                                class="{{ Route::is('size_charts.index', 'size_charts.create', 'icons.create', 'icons.index') ? 'subdrop active' : '' }}">
                                 <i class="ti ti-file-invoice"></i><span>Size-chart</span><span
                                     class="menu-arrow"></span>
                             </a>
@@ -60,7 +60,9 @@
                                 <li><a class="{{ Route::is('size_charts.create') ? 'active' : '' }}"
                                         href="{{ Route('size_charts.create') }}">Create size chart</a></li>
                                 <li><a class="{{ Route::is('icons.create') ? 'active' : '' }}"
-                                        href="{{ Route('icons.create') }}">Icons</a></li>
+                                        href="{{ Route('icons.create') }}">Upload icons</a></li>
+                                <li><a class="{{ Route::is('icons.index') ? 'active' : '' }}"
+                                        href="{{ Route('icons.index') }}">Icons</a></li>
                             </ul>
                         </li>
                     </ul>

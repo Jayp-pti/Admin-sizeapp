@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ChartIcons;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ChartIconsController extends Controller
 {
@@ -12,7 +13,8 @@ class ChartIconsController extends Controller
      */
     public function index()
     {
-        return view('Charticons.index');
+        $Charticons = ChartIcons::all();
+        return view('Charticons.index', compact('Charticons'));
     }
 
     /**
@@ -28,7 +30,23 @@ class ChartIconsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        try {
+            $data = $request->all();
+            $data['status'] = isset($data['status']) ? (int)$data['status'] : 0;
+            if ($request->hasFile('icon')) {
+                $data['icon'] = $request->file('icon')->store('icons', 'public');
+            }
+            ChartIcons::create($data);
+            return redirect()->back()->with('status', 'Size chart icon uploaded successfully');
+        } catch (\Exception $e) {
+            Log::error('Error uploading size chart icon: ' . $e->getMessage());
+            return back()->withErrors('Error uploading size chart icon. Please try again.');
+        }
     }
 
     /**

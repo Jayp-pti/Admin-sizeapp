@@ -11,7 +11,7 @@
                             @if (Route::is('icons.edit'))
                                 Edit Icon
                             @else
-                                Upload Icon
+                                Upload Icons
                             @endif
                         @endslot
                     @endcomponent
@@ -23,16 +23,17 @@
                                     <x-error-messages class="my-custom-class" id="error-container" />
                                     <div class="settings-form">
                                         <form
-                                            action="{{ Route::is('icons.edit') ? Route('icons.update', $size_chart->id) : Route('size_charts.store') }}"
+                                            action="{{ Route::is('icons.edit') ? Route('icons.update', $size_chart->id) : Route('icons.store') }}"
                                             method="POST" id="upload_icons" enctype="multipart/form-data">
                                             @csrf
 
                                             @if (Route::is('icons.edit'))
                                                 @method('PUT')
                                             @endif
-                                            <input type="hidden" id="size-chart-data" name="field_value">
                                             <div class="settings-sub-header">
-                                                <p>To create a subcategory for a size template in Shopify</p>
+                                                <p class="card-text"><b>Adding Icons for the Size Chart Button in a
+                                                        Shopify</b>
+                                                </p>
                                             </div>
                                             @if (session('status'))
                                                 <p class="alert alert-success" role="alert">
@@ -57,7 +58,7 @@
                                                                 <label class="profile-upload-btn">
                                                                     <i class="ti ti-file-broken"></i> Upload Icon
                                                                     <input type="file" id="imag" class="input-img"
-                                                                        name="image" data-imgpreview="preview1">
+                                                                        name="icon" data-imgpreview="preview1">
                                                                 </label>
                                                                 <p>JPG, GIF or PNG. Max size of 800K</p>
                                                             </div>
@@ -74,7 +75,19 @@
                                                             value="">
                                                     </div>
                                                 </div>
-
+                                                <div class="col-md-6">
+                                                    <div class="form-wrap">
+                                                        <p class="card-text"><b>Note: </b> The status for this item is
+                                                            optional; by default, it will be set to Draft. You can change
+                                                            it by selecting a different status.</p>
+                                                        <select class=" form-control" id="status" name="status">
+                                                            <option value="0">
+                                                                Draft</option>
+                                                            <option value="1">
+                                                                Active</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                     </div>
                                     <div class="submit-button">
