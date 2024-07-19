@@ -2332,6 +2332,8 @@ function ajaxRequest(url, method, headers, data, callback) {
 }
 
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
     let status_updates = document.querySelectorAll('.status_update'); // Adjust selector if needed
     let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Get CSRF token
@@ -2341,8 +2343,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const id_s = this.getAttribute('data-id'); // Use 'this' to refer to the clicked element
             let isChecked = this.checked;
 
-            let baseUrl = window.location.origin; // Base URL of the current domain
-            let requestUrl = `${baseUrl}/icons/${id_s}`;
+            let baseUrl = window.App.icons; // Base URL of the current domain
+            let requestUrl = `${baseUrl}/${id_s}`;
             $.ajax({
                 url: requestUrl, // Ensure this URL matches your Laravel route
                 method: 'PUT',

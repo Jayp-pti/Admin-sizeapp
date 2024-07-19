@@ -135,6 +135,12 @@
             </script>
         @endif
 
+        <script>
+            window.App = {
+                baseUrl: "{{ url('/') }}",
+                icons: "{{ Route('icons.index') }}"
+            };
+        </script>
     </body>
 
 </html>
