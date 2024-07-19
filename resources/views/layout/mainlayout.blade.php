@@ -137,7 +137,7 @@
 
         <script>
             window.App = {
-                baseUrl: "{{ url('/') }}",
+                BaseURL: "{{ url('/') }}",
                 icons: "{{ Route('icons.index') }}"
             };
         </script>
