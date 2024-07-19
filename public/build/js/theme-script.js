@@ -306,9 +306,3 @@ if ($('#dark-mode-toggle').length > 0) {
         }
     });
 }
-
-
-
-
-    
-
