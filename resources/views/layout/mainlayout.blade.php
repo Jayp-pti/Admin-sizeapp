@@ -14,6 +14,8 @@
 
         @include('layout.partials.head')
         <x-head.tinymce-config />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 
     </head>
 
@@ -120,6 +122,19 @@
         <!-- /Main Wrapper -->
 
         @include('layout.partials.footer-scripts')
+        <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            </script>
+        @endif
+
     </body>
 
 </html>

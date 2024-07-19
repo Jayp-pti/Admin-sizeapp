@@ -1937,9 +1937,9 @@ $(document).ready(function () {
                 {
                     render: function (data, type, row) {
                         return (
-                            '<h2 class="table-avatar d-flex align-items-center"><a href="company-details" class="company-img"><img class="avatar-img" src="' +
+                            '<h2 class="table-avatar d-flex align-items-center"><a href="javascript:void(0);" class="company-img"><img class="avatar-img" src="' +
                             row["lead_img"] +
-                            '" alt="User Image"></a><a href="company-details" class="profile-split d-flex flex-column">' +
+                            '" alt="User Image"></a><a href="javascript:void(0);" class="profile-split d-flex flex-column">' +
                             row["lead_name"] +
                             "<span>" +
                             row["lead_city"] +

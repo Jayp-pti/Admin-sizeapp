@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChartIcons;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 
 class ChartIconsController extends Controller
 {
@@ -42,6 +44,8 @@ class ChartIconsController extends Controller
                 $data['icon'] = $request->file('icon')->store('icons', 'public');
             }
             ChartIcons::create($data);
+            Session::flash('success', 'Size chart icon uploaded successfully');
+
             return redirect()->back()->with('status', 'Size chart icon uploaded successfully');
         } catch (\Exception $e) {
             Log::error('Error uploading size chart icon: ' . $e->getMessage());
@@ -68,9 +72,47 @@ class ChartIconsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ChartIcons $chartIcons)
+    // public function update(Request $request, ChartIcons $chartIcons)
+    // {
+    //     //
+
+    //     // $response =   $chartIcons->update($request->only('status'));
+    //     // return json_encode($response);
+    //     $validatedData = $request->validate([
+    //         'status' => 'required|boolean', // Validate that 'status' is a boolean value
+    //     ]);
+
+    //     // Update the chart icon status
+    //     $success = $chartIcons->update($validatedData);
+
+    //     // Return a JSON response
+    //     return response()->json([
+    //         'success' => $success,
+    //         'message' => $success ? 'Status updated successfully!' : 'Failed to update status.',
+    //     ]);
+    // }
+
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'status' => 'required|boolean',
+        ]);
+        $chartIcons = ChartIcons::find($id);
+        if (!$chartIcons) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Record not found.',
+            ], 404);
+        }
+
+        $chartIcons->status = $validatedData['status'];
+        $success = $chartIcons->save(); // Save the changes
+
+        return response()->json([
+            'success' => $success,
+            'message' => $success ? 'Status updated successfully!' : 'Failed to update status.',
+            'data' => $success ? $chartIcons : null, // Include the updated record
+        ]);
     }
 
     /**

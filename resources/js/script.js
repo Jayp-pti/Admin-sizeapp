@@ -3,6 +3,7 @@ Author       : Dreamguys
 Template Name: CRMS - Bootstrap Admin Template
 */
 
+var csrfToken = $('meta[name="csrf-token"]').attr("content");
 $(document).ready(function () {
     // Variables declarations
     var $wrapper = $(".main-wrapper");
@@ -2330,3 +2331,46 @@ function ajaxRequest(url, method, headers, data, callback) {
     }
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    let status_updates = document.querySelectorAll('.status_update'); // Adjust selector if needed
+    let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); // Get CSRF token
+
+    status_updates.forEach((element) => {
+        element.addEventListener('change', function() { // Changed to 'change' event
+            const id_s = this.getAttribute('data-id'); // Use 'this' to refer to the clicked element
+            let isChecked = this.checked;
+
+            $.ajax({
+                url: `/icons/${id_s}`, // Ensure this URL matches your Laravel route
+                method: 'PUT',
+                data: {
+                    status: isChecked ? 1 : 0,
+                    _token: csrfToken // Include CSRF token
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Status updated successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        let statusElement = document.querySelector(`#status-${id_s}`);
+                        if (statusElement) {
+                            response.data.status == 1 ? statusElement.classList.add('connected') : statusElement.classList.remove('connected');
+                            statusElement.textContent = response.data.status == 1 ? 'Active' : 'Draft';
+                        }
+                    });
+                },
+                error: function(xhr) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to update status.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        });
+    });
+});

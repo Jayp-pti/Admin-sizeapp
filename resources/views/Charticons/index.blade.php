@@ -47,7 +47,7 @@
                                                         <img src="{{ asset('storage/' . ($icon->icon ? $icon->icon : URL::asset('/build/img/profiles/avatar-02.jpg'))) }}"
                                                             alt="Icon">
                                                         <div class="connect-btn">
-                                                            <a href="javascript:void(0);"
+                                                            <a href="javascript:void(0);" id="status-{{ $icon->id }}"
                                                                 class=" {{ $icon->status == 1 ? 'connected' : '' }} ">
                                                                 {{ $icon->status == 1 ? 'Active' : 'Draft' }} </a>
                                                         </div>
@@ -55,7 +55,8 @@
                                                     <div class="integration-content">
                                                         <p>{{ ucfirst($icon->name) }}</p>
                                                         <div class="status-toggle">
-                                                            <input id="google_calendar_{{ $icon->id }}" class="check"
+                                                            <input id="google_calendar_{{ $icon->id }}"
+                                                                class="check status_update" data-id="{{ $icon->id }}"
                                                                 type="checkbox" {{ $icon->status == 1 ? 'checked' : '' }}>
                                                             <label for="google_calendar_{{ $icon->id }}"
                                                                 class="checktoggle">checkbox</label>
