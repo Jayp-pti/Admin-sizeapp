@@ -72,26 +72,6 @@ class ChartIconsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, ChartIcons $chartIcons)
-    // {
-    //     //
-
-    //     // $response =   $chartIcons->update($request->only('status'));
-    //     // return json_encode($response);
-    //     $validatedData = $request->validate([
-    //         'status' => 'required|boolean', // Validate that 'status' is a boolean value
-    //     ]);
-
-    //     // Update the chart icon status
-    //     $success = $chartIcons->update($validatedData);
-
-    //     // Return a JSON response
-    //     return response()->json([
-    //         'success' => $success,
-    //         'message' => $success ? 'Status updated successfully!' : 'Failed to update status.',
-    //     ]);
-    // }
-
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([

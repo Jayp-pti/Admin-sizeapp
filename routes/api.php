@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\v1\FetchtemplatesController;
+use App\Http\Controllers\api\v1\IconsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => '/v1'], function () {
     Route::resource('categories', FetchtemplatesController::class);
+    Route::resource('icons', IconsController::class);
     Route::get('template/{id}', [FetchtemplatesController::class, 'FetchTemplates']);
 });
